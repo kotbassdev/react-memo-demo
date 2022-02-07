@@ -1,25 +1,19 @@
-import logo from './logo.svg';
-import './App.css';
+import React,{useState} from 'react'
+import Counter from './Counter';
+import UserList from './UserList';
 
-function App() {
+export default function App() {
+  const [users,setUsers] = useState(['User 1','User 2','User 3','User 4','User 5'])
+  const [count,setCount] = useState(0);
+
+  function handleCountClick(){
+    setCount(count+1)
+  }
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <React.Fragment>
+      <UserList users={users}/>
+      <Counter count={count} hdlClick={handleCountClick}/>
+    </React.Fragment>
   );
 }
-
-export default App;
